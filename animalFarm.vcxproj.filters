@@ -110,6 +110,9 @@
     <ClInclude Include="src\animal.h">
       <Filter>src</Filter>
     </ClInclude>
+    <ClInclude Include="src\ofxCenteredTrueTypeFont.h">
+      <Filter>src</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />

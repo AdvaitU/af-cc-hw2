@@ -25,7 +25,7 @@ class ofApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
 		
-		ofImage hungryCat;
+		ofImage hungryCat;          // Objects to hold 7 different images showing cats
 		ofImage happyCat;
 		ofImage toBePetCat;
 		ofImage sadCat;
@@ -33,13 +33,13 @@ class ofApp : public ofBaseApp{
 		ofImage thirstyCat;
 		ofImage exhaustedCat;
 
-		ofTrueTypeFont font;
+		ofTrueTypeFont font;           // Objects holding font styles for instructions and main text output
 		ofTrueTypeFont instructions;
 
-		int startTime;
+		int startTime;                // Variables to contain time in milliseconds as ints to trigger ticks
 		int currTime;
 
-		Animal animal;
+		Animal animal;                // Instance of Animal class
 		
 
 };

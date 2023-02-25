@@ -24,22 +24,22 @@ void Animal::set(float i1, float i2, float i3)
 void Animal::feedAnimal()
 {
 
-	hunger -= 2;
-	happiness++;
+	hunger -= ofRandom(0.5, 1.5);
+	happiness += ofRandom(0.1, 0.5);
 
 }
 
 void Animal::petAnimal()
 {
 
-	happiness += 1.0;
+	happiness += ofRandom(0.5, 1.5);
 
 }
 
 void Animal::quenchAnimal()
 {
-	thirst -= 2.0;
-	happiness += 1.0;
+	thirst -= ofRandom(0.5, 1.5);
+	happiness += ofRandom(0.1, 0.5);
 
 }
 
