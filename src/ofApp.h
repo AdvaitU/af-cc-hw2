@@ -27,8 +27,11 @@ class ofApp : public ofBaseApp{
 		
 		ofImage hungryCat;
 		ofImage happyCat;
-		ofImage pettedCat;
+		ofImage toBePetCat;
 		ofImage sadCat;
+		ofImage sleepingCat;
+		ofImage thirstyCat;
+		ofImage exhaustedCat;
 
 		ofTrueTypeFont font;
 		ofTrueTypeFont instructions;

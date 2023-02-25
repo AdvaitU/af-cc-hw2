@@ -8,8 +8,11 @@ void ofApp::setup(){
 
 	hungryCat.load("hungryCat-01.jpg");   // Loading up images
 	happyCat.load("happyCat-01.jpg");
-	pettedCat.load("pettedCat-01.jpg");
+	toBePetCat.load("toBePetCat-01.jpg");
 	sadCat.load("sadCat-01.jpg");
+	sleepingCat.load("sleepingCat-01.jpg");
+	thirstyCat.load("thirstyCat-01.jpg");
+	exhaustedCat.load("exhaustedCat-01.jpg");
 
 	font.load("Cascadia.ttf", 21);  // Loading font file
 	instructions.load("Cascadia.ttf", 16);
@@ -29,7 +32,8 @@ void ofApp::draw(){
 	float imgWidth = happyCat.getWidth() / 2;     // Floats for image width and height for drawing
 	float imgHeight = happyCat.getHeight() / 2;
 
-	instructions.drawString("Press 'Q' to feed the cat, 'E' to give it water\n    and 'T' to pet it. Don't kill your pet!", 700, 1100);
+	instructions.drawString("Press 'Q' to feed the cat, 'E' to give it water\n    and 'T' to pet it. 'P' to exit the app", 700, 1100);
+	//instructions.drawString("Keep Hunger and Thirst levels LOW and Happiness level HIGH", 700, 1000);
 	
 	sadCat.draw(500, 80, imgWidth, imgHeight);   // TESTS FOR DIMENSIONS FOR ALL CAT IMAGES 
 	//font.drawString("Hi!!", 500, 950);
@@ -40,9 +44,40 @@ void ofApp::draw(){
 		startTime = ofGetElapsedTimeMillis();
 	}
 
+	animal.statusAnimal();
+	font.drawString("Meowses is " + animal.messageText, 500, 950);
+
+	switch (animal.petState) {
+	case 1:
+		exhaustedCat.draw(500, 80, imgWidth, imgHeight);
+		break;
+	case 2:
+		sadCat.draw(500, 80, imgWidth, imgHeight);
+		break;
+	case 3:
+		hungryCat.draw(500, 80, imgWidth, imgHeight);
+		break;
+	case 4:
+		thirstyCat.draw(500, 80, imgWidth, imgHeight);
+		break;
+	case 5:
+		happyCat.draw(500, 80, imgWidth, imgHeight);
+		break;
+	case 6:
+		toBePetCat.draw(500, 80, imgWidth, imgHeight);
+		break;
+	case 7:
+		sleepingCat.draw(500, 80, imgWidth, imgHeight);
+		break;
+	default:
+		sleepingCat.draw(500, 80, imgWidth, imgHeight);
+		break;
+
+	}
+
 	string outText = "Hunger level: " + ofToString(animal.hunger) + ", Thirst Level: " + ofToString(animal.thirst) + ", Happiness Level: " + ofToString(animal.happiness);
-	font.drawString(outText, 500, 950);
-	instructions.drawString("Keep Hunger and Thirst levels LOW and Happiness level HIGH", 700, 1000);
+	instructions.drawString(outText, 700, 1000);
+	
 	
 
 
@@ -65,6 +100,8 @@ void ofApp::keyPressed(int key){
 		animal.petAnimal();
 		animal.clipValues();
 		break;
+	case 'p':
+		OF_EXIT_APP(0);
 	default:
 		break;
 	}

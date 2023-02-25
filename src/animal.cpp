@@ -61,16 +61,34 @@ void Animal::tickAnimal()
 void Animal::statusAnimal()
 {
 
-	if ((hunger >= 7.0) && (thirst >= 7.0) && (happiness >= 6.0)) {
-		petState = 4;     // exhaustedCat
+	if ((hunger >= 7.0) && (thirst >= 7.0) && (happiness >= 6.0)) {   // V hungry and thirsty but happy
+		petState = 1;     // exhaustedCat
+		messageText = "hungry and parched.";
 	} 
-	else if ((hunger >= 7.0) && (thirst >= 7.0) && (happiness <= 6.0)) {
-		petState = 5     // sadCat
+	else if ((hunger >= 7.0) && (thirst >= 7.0) && (happiness <= 6.0)) {     // V. hungry and thirsty and unhappy
+		petState = 2;    // sadCat
+		messageText = "hungry, thirsty and deeply dissatisfied.";
 	}
-	else if ((hunger >= 7.0) && (thirst < 7.0) && (happiness <= 6.0)) {
+	else if ((hunger >= 7.0) && (thirst < 7.0)) {                  // Hungry but not thirsty - Happiness independent
 		petState = 3;    // hungryCat
+		messageText = "hungry!";
 	}
-
+	else if ((hunger < 7.0) && (thirst >= 7.0)) {                 // Thirsty but not hungry - Happiness Independent
+		petState = 4;    // thirstyCat
+		messageText = "parched!";
+	}
+	else if ((hunger < 7.0) && (thirst < 7.0) && (happiness > 6.0)) {  // Not hungry, not thirsty - Just happy
+		petState = 5;   // happyCat
+		messageText = "extremely happy. He's glowing!";
+	}
+	else if ((hunger < 7.0) && (thirst < 7.0) && (happiness <= 4.0)) {  // Not hungry, not thirsty but unhappy
+		petState = 6;   // toBePetCat
+		messageText = "healthy but could use a few pets.";
+	}
+	else {   // Or else
+		petState = 7;   // sleepingCat
+		messageText = "asleep. He seems well.";
+	}
 }
 
 void Animal::clipValues()

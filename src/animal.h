@@ -13,6 +13,7 @@ public:
 	bool happinessTick = true;   // Bool to judge either happiness decreasing every tick or not
 	string name;
 	int petState;
+	string messageText;
 
 	Animal();
 	~Animal();
