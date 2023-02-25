@@ -33,6 +33,9 @@ class ofApp : public ofBaseApp{
 		ofTrueTypeFont font;
 		ofTrueTypeFont instructions;
 
+		int startTime;
+		int currTime;
+
 		Animal animal;
 		
 

@@ -32,22 +32,22 @@ void Animal::feedAnimal()
 void Animal::petAnimal()
 {
 
-	happiness++;
+	happiness += 1.0;
 
 }
 
 void Animal::quenchAnimal()
 {
-	thirst -= 2;
-	happiness += 1;
+	thirst -= 2.0;
+	happiness += 1.0;
 
 }
 
 void Animal::tickAnimal()
 {
 
-	hunger += ofRandom(0.0, 1.0);
-	thirst += ofRandom(0.0, 1.0);
+	hunger += ofRandom(0.4, 0.1);
+	thirst += ofRandom(0.4, 0.1);
 
 	if (happinessTick == true) {
 		happiness -= ofRandom(0.0, 1.0);
@@ -55,40 +55,20 @@ void Animal::tickAnimal()
 
 	happinessTick != happinessTick;   // Set happinessTick as reverse so it runs on alternate runs of tickAnimal()
 
-	clipValues();  // CLip values between 0 and 10
+	clipValues();  // Clip values between 0 and 10
 }
 
 void Animal::statusAnimal()
 {
 
-	if (hunger >= 7) {
-
-	}
-	else if (hunger == 10) {
-
-	}
-	else {
-
-	}
-	
-	if (happiness <= 3) {
-
-	}
-	else if (happiness == 0) {
-
-	}
-	else {
-
-	}
-	
-	if (thirst >= 7) {
-
+	if ((hunger >= 7.0) && (thirst >= 7.0) && (happiness >= 6.0)) {
+		petState = 4;     // exhaustedCat
 	} 
-	else if (thirst == 10) {
-
+	else if ((hunger >= 7.0) && (thirst >= 7.0) && (happiness <= 6.0)) {
+		petState = 5     // sadCat
 	}
-	else {
-
+	else if ((hunger >= 7.0) && (thirst < 7.0) && (happiness <= 6.0)) {
+		petState = 3;    // hungryCat
 	}
 
 }
@@ -96,25 +76,25 @@ void Animal::statusAnimal()
 void Animal::clipValues()
 {
 
-	if (hunger > 10) {
-		hunger = 10;
+	if (hunger >= 10.0) {
+		hunger = 10.0;
 	}
-	if (hunger < 0) {
-		hunger = 0;
-	}
-
-	if (happiness > 10) {
-		happiness = 10;
-	}
-	if (happiness < 0) {
-		happiness = 0;
+	if (hunger < 0.0) {
+		hunger = 0.0;
 	}
 
-	if (thirst > 10) {
-		thirst = 10;
+	if (happiness >= 10.0) {
+		happiness = 10.0;
 	}
-	if (thirst < 0) {
-		thirst = 0;
+	if (happiness <= 0.0) {
+		happiness = 0.0;
+	}
+
+	if (thirst >= 10.0) {
+		thirst = 10.0;
+	}
+	if (thirst <= 0.0) {
+		thirst = 0.0;
 	}
 
 }

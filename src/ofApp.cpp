@@ -1,9 +1,10 @@
 #include "ofApp.h"
+#include "ofMath.h"
 
 //--------------------------------------------------------------
 void ofApp::setup(){
 
-	animal.set(5.0, 5.0, 5.0);  // Setting initial values
+	animal.set(5.0, 5.0, 4.0);  // Setting initial values
 
 	hungryCat.load("hungryCat-01.jpg");   // Loading up images
 	happyCat.load("happyCat-01.jpg");
@@ -12,6 +13,8 @@ void ofApp::setup(){
 
 	font.load("Cascadia.ttf", 21);  // Loading font file
 	instructions.load("Cascadia.ttf", 16);
+
+	startTime = ofGetElapsedTimeMillis();
 
 }
 
@@ -29,7 +32,17 @@ void ofApp::draw(){
 	instructions.drawString("Press 'Q' to feed the cat, 'E' to give it water\n    and 'T' to pet it. Don't kill your pet!", 700, 1100);
 	
 	sadCat.draw(500, 80, imgWidth, imgHeight);   // TESTS FOR DIMENSIONS FOR ALL CAT IMAGES 
-	font.drawString("Hi!!", 500, 950);
+	//font.drawString("Hi!!", 500, 950);
+
+	currTime = ofGetElapsedTimeMillis() - startTime;
+	if (currTime >= 1500) {   
+		animal.tickAnimal();
+		startTime = ofGetElapsedTimeMillis();
+	}
+
+	string outText = "Hunger level: " + ofToString(animal.hunger) + ", Thirst Level: " + ofToString(animal.thirst) + ", Happiness Level: " + ofToString(animal.happiness);
+	font.drawString(outText, 500, 950);
+	instructions.drawString("Keep Hunger and Thirst levels LOW and Happiness level HIGH", 700, 1000);
 	
 
 
@@ -38,6 +51,24 @@ void ofApp::draw(){
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
+
+	switch (key) {
+	case 'q':
+		animal.feedAnimal();
+		animal.clipValues();
+		break;
+	case 'e':
+		animal.quenchAnimal();
+		animal.clipValues();
+		break;
+	case 't':
+		animal.petAnimal();
+		animal.clipValues();
+		break;
+	default:
+		break;
+	}
+		
 
 }
 
