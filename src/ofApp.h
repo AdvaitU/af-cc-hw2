@@ -1,6 +1,5 @@
 #pragma once
 
-#include "ofMain.h"
 #include "animal.h"
 //#include "animal.cpp"
 using namespace std;
@@ -30,6 +29,9 @@ class ofApp : public ofBaseApp{
 		ofImage happyCat;
 		ofImage pettedCat;
 		ofImage sadCat;
+
+		ofTrueTypeFont font;
+		ofTrueTypeFont instructions;
 
 		Animal animal;
 		

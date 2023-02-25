@@ -11,6 +11,7 @@ public:
 	float thirst;        // Thirst level of the animal
 	float happiness;     // Happiness level of the animal
 	bool happinessTick = true;   // Bool to judge either happiness decreasing every tick or not
+	string name;
 
 	Animal();
 	~Animal();
