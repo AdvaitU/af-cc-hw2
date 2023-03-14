@@ -1,4 +1,4 @@
-# Tamagotchi-Style Cat Emulator   
+# Homework 2 - Tamagotchi-Style Cat Simulator 
 
 ### Description   
 A tamagotchi-styled barebones game about a cat built using [OpenFrameworks](https://openframeworks.cc/). Instructions included in run. Homework assignment for submission for the course Coding 2 - Advanced Frameworks at the CCI (Febrary 2022).
